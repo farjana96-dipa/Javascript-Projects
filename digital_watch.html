@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Watch</title>
+    <style>
+        #mywatch{
+            width: 800px;
+            margin: 100px auto;
+            padding: 50px;
+        }
+        .H{
+            background-color: rgb(5, 185, 195);
+            color : #ffffff;
+            border-radius: 12px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 58px;
+            padding: 30px;
+            font-weight: bold;
+        }
+        .MM{
+            background-color: rgb(241, 12, 241);
+            color : #ffffff;
+            border-radius: 12px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 58px;
+            padding: 30px;
+            font-weight: bold;
+        }
+        .SS{
+            background-color: rgb(7, 18, 240);
+            color : #ffffff;
+            border-radius: 12px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 58px;
+            padding: 30px;
+            font-weight: bold;
+        }
+        .M{
+            
+            color : #e30909;
+            border-radius: 12px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 80px;
+            padding: 30px;
+            font-weight: bold;
+        }
+        .date{
+            background-color: rgb(129, 154, 4);
+            color : #0c0505;
+            border-radius: 5px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 20px;
+            padding: 10px 30px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="mywatch">
+        <span class="H"></span>
+        <span class="MM"></span>
+        <span class="SS"></span>
+        <span class="M"></span><br><br><br><br><br>
+        <span class="date"></span>
+    </div>
+
+    <script>
+        function mytime(){
+            var time = new Date();
+            var min = (time.getMinutes() < 10) ? "0"+ time.getMinutes() : time.getMinutes();
+            var  sc = (time.getSeconds() < 10 ) ? "0" + time.getSeconds() : time.getSeconds();
+            var  m = (time.getHours() >= 12 ) ? "PM" : "AM";
+            var hr;
+                if(time.getHours() == 0){
+                    hr=12;
+                }
+                else if(time.getHours() > 12){
+                    hr = time.getHours() - 12;
+                }
+                else if(time.getHours() < 10){
+                    hr = "0" +  time.getHours();
+                }
+
+                //var curTime = hr + ":" + min + ":" + sc + " ";
+
+                document.getElementsByClassName("H")[0].innerHTML = hr + ":";
+                document.getElementsByClassName("MM")[0].innerHTML = min + ":";
+                document.getElementsByClassName("SS")[0].innerHTML = sc + " ";
+                document.getElementsByClassName("M")[0].innerHTML = m;
+
+                var day = ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday"];
+                var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                var dd = time.getDay();
+                var mm = time.getMonth();
+                var tt = time.getDate();
+                document.getElementsByClassName("date")[0].innerHTML = day[dd] + ", " + month[mm] + " " + tt;
+        }
+
+        mytime();
+
+        setInterval(function(){
+            mytime();
+        }, 1000);
+    </script>
+</body>
+</html>

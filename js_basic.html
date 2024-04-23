@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental of Javascript</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <button onclick="document.getElementById('demo').innerHTML = Date();">Click Me</button>
+    <script>
+        let st = new Set(['a','b','c','b','d','e','c']);
+        st.add('f');
+        let y = st.size;
+        let txt = "";
+        st.forEach(function(value){
+            txt += value;
+        });
+
+    
+    
+        document.getElementById("demo").innerHTML = txt;
+        document.getElementById("demo1").innerHTML = y;
+       // document.getElementById("demo2").innerHTML =z.length + " " +  z;
+    
+    
+    </script>
+</body>
+</html>
